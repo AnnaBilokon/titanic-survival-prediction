@@ -16,7 +16,6 @@ Predict whether a passenger survived the Titanic disaster using **EDA**, **featu
 |---|---|---|
 | <img src="images/eda_class.png" alt="EDA gender x class" width="260"/> | <img src="images/leaderboard.png" alt="Leaderboard" width="260"/> | <img src="images/app_screenshot.png" alt="App screenshot" width="260"/> |
 
-> Replace the image files in `images/` with your own screenshots.
 
 ---
 
@@ -90,20 +89,3 @@ Implemented in `pipeline.py` with simple constructors and a shared `evaluate_mod
 - The selected model was deployed via a **Streamlit** app for interactive predictions.
 
 ---
-
-## 🧩 Project Structure
-
-.
-├─ data/
-│  ├─ train.csv
-│  └─ test.csv
-├─ features.py          
-├─ pipeline.py         
-├─ app.py               
-├─ titanic_project.ipynb
-├─ titanic_model.pkl   
-├─ requirements.txt
-└─ images/
-   ├─ eda_gender_class.png
-   ├─ leaderboard.png
-   └─ app_screenshot.png
