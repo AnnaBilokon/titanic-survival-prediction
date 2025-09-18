@@ -12,7 +12,7 @@ Predict whether a passenger survived the Titanic disaster using **EDA**, **featu
 
 ## 🖼️ Preview
 
-| EDA: Survival by Gender × Class | Model Leaderboard | Streamlit App |
+| EDA: Survival by Passanger Class | Model Leaderboard | Streamlit App |
 |---|---|---|
 | <img src="images/eda_class.png" alt="EDA gender x class" width="260"/> | <img src="images/leaderboard.png" alt="Leaderboard" width="260"/> | <img src="images/app_screenshot.png" alt="App screenshot" width="260"/> |
 
@@ -93,16 +93,17 @@ Implemented in `pipeline.py` with simple constructors and a shared `evaluate_mod
 
 ## 🧩 Project Structure
 
+.
 ├─ data/
-│ ├─ train.csv
-│ └─ test.csv
-├─ features.py # feature engineering utilities
-├─ pipeline.py # model builders + CV evaluation
-├─ app.py # Streamlit app (live demo)
+│  ├─ train.csv
+│  └─ test.csv
+├─ features.py          
+├─ pipeline.py         
+├─ app.py               
 ├─ titanic_project.ipynb
-├─ titanic_model.pkl # saved trained model (artifact dict recommended)
+├─ titanic_model.pkl   
 ├─ requirements.txt
 └─ images/
-├─ eda_gender_class.png
-├─ leaderboard.png
-└─ app_screenshot.png
+   ├─ eda_gender_class.png
+   ├─ leaderboard.png
+   └─ app_screenshot.png
