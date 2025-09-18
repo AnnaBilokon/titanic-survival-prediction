@@ -37,13 +37,33 @@ def apply_stats(df: pd.DataFrame, stats: dict) -> pd.DataFrame:
     return out_df
 
 
+def add_age_category(df: pd.DataFrame) -> pd.DataFrame:
+    out_df = df.copy()
+ 
+    bins = [-np.inf, 12, 59, np.inf]
+    labels = ["Child", "Adult", "Senior"]
+    out_df["Age_category"] = pd.cut(out_df["Age"], bins=bins, labels=labels)
+
+
+    out_df["Age_category"] = out_df["Age_category"].astype("category")
+    if "Unknown" not in out_df["Age_category"].cat.categories:
+        out_df["Age_category"] = out_df["Age_category"].cat.add_categories("Unknown")
+    out_df["Age_category"] = out_df["Age_category"].fillna("Unknown")
+
+    return out_df
+
+
 def prepare_matrix(df: pd.DataFrame, drop_target: bool = False) -> pd.DataFrame:
-    """Turn a cleaned df into a modeling matrix (one-hots + numeric)."""
+
     X = df.copy()
     if X["Sex"].dtype == "object":
         X["Sex"] = X["Sex"].map({"male": 0, "female": 1}).astype(int)
-    X = pd.get_dummies(X, columns=["Pclass", "Embarked", "Title"], prefix=[
-                       "Pclass", "Embarked", "Title"])
+
+    onehot_cols = ["Pclass", "Embarked", "Title"]
+    if "Age_category" in X.columns:
+        onehot_cols.append("Age_category")
+
+    X = pd.get_dummies(X, columns=onehot_cols, prefix=onehot_cols)
 
     bool_cols = X.select_dtypes(include=bool).columns
     X[bool_cols] = X[bool_cols].astype(int)
